@@ -8,10 +8,10 @@ function App() {
     let [todoListOne, setTodoListOne] = useState<todo[]>([]);
     let [todoListTwo, setTodoListTwo] = useState<todo[]>([]);
     let [todoListThree, setTodoListThree] = useState<todo[]>([]);
-    let [formValue,setFormValue] = useState<todo>({
+    let [formValue, setFormValue] = useState<todo>({
         title: "",
         description: ""
-    }) ;
+    });
 
     function addToList(item: todo, listNumber: number): void {
         switch (listNumber) {
@@ -36,7 +36,7 @@ function App() {
         }
     }
 
-    function removeToList(index: number,item:todo, listNumber: number): void {
+    function removeToList(index: number, item: todo, listNumber: number): void {
         switch (listNumber) {
             case 1: {
                 setTodoListOne((state) => {
@@ -75,7 +75,7 @@ function App() {
                 break;
             }
         }
-        setFormValue(item) ;
+        setFormValue(item);
     }
 
     return (
@@ -91,17 +91,11 @@ function App() {
             </header>
             <div className="container mt-4">
                 <h2>Add Items</h2>
-                <MyForm addToList={addToList} value={formValue} />
+                <MyForm addToList={addToList} value={formValue}/>
                 <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
-                    <div className="col">
-                        <List items={todoListOne} listNumber={1} removeToList={removeToList} listLabel={"Tasks 1"}/>
-                    </div>
-                    <div className="col">
-                        <List items={todoListTwo} listNumber={2} removeToList={removeToList} listLabel={"Tasks 2"}/>
-                    </div>
-                    <div className="col">
-                        <List items={todoListThree} listNumber={3} removeToList={removeToList} listLabel={"Task 3"}/>
-                    </div>
+                    <List items={todoListOne} listNumber={1} removeToList={removeToList} listLabel={"Lists 1"}/>
+                    <List items={todoListTwo} listNumber={2} removeToList={removeToList} listLabel={"Lists 2"}/>
+                    <List items={todoListThree} listNumber={3} removeToList={removeToList} listLabel={"List 3"}/>
                 </div>
             </div>
         </div>
